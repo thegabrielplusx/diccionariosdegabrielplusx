@@ -1,0 +1,16 @@
+
+Español:
+
+El Generador de Diccionarios (Gabrielplusx) fue diseñado para crear diccionarios personalizados destinados a pruebas de penetración y auditorías de contraseñas. El programa permite exportar los resultados en formato .txt y descargar la información OSINT que hayas ingresado durante el proceso.
+
+Ingles:
+
+The Dictionary Generator (Gabrielplusx) was designed to create custom dictionaries for penetration testing and password audits. The program allows you to export the results in .txt format and download the OSINT information you entered during the process.
+
+Portugues de Brasil
+
+O Gerador de Dicionários (Gabrielplusx) foi desenvolvido para criar dicionários personalizados destinados a testes de penetração e auditorias de senhas. O programa permite exportar os resultados em formato .txt e baixar as informações OSINT inseridas durante o processo.
+
+Portugues de Portugal
+
+O Gerador de Dicionários (Gabrielplusx) foi concebido para criar dicionários personalizados destinados a testes de penetração e auditorias de palavras-passe. O programa permite exportar os resultados em formato .txt e descarregar as informações OSINT que tiver introduzido durante o processo.

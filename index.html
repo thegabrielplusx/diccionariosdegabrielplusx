@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Diccionarios (Gabrielplusx)</title>
+    <link rel="stylesheet" href="diseño.css">
+</head>
+<body>
+
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--term-green); padding-bottom: 10px; margin-bottom: 20px;">
+            <h1 style="border: none; padding: 0; margin: 0;" id="t_title">[Generador de Diccionarios (Gabrielplusx)]</h1>
+            <button type="button" id="btnLang" onclick="toggleLang()" style="width: auto; margin: 0; padding: 5px 15px;">[ IDIOMA: ES ]</button>
+        </div>
+        
+        <form id="generatorForm">
+            <h3 id="t_h3_1">Datos del Objetivo</h3>
+            
+            <label for="inputNombre" id="t_l_nombre">Nombres / Apellidos:</label>
+            <span class="label-hint" id="t_h_nombre">Ej. Patricia, Gabriel, Diego. (Separa con comas)</span>
+            <div class="input-wrapper"><input type="text" id="inputNombre" placeholder="Patricia, Gabriel, Diego"></div>
+
+            <label for="inputFamilia" id="t_l_familia">Pareja / Hijos / Familiares:</label>
+            <span class="label-hint" id="t_h_familia">Nombres de personas cercanas. (Separa con comas)</span>
+            <div class="input-wrapper"><input type="text" id="inputFamilia" placeholder="Angel, Dexter"></div>
+
+            <label for="inputLugares" id="t_l_lugares">Lugares / Ciudades Importantes:</label>
+            <span class="label-hint" id="t_h_lugares">Ciudad natal, residencia. (Separa con comas)</span>
+            <div class="input-wrapper"><input type="text" id="inputLugares" placeholder="Caracas, São Paulo y Guasdualito"></div>
+
+            <label for="inputFecha" id="t_l_fecha">Fechas Importantes (Años, Días, Fechas completas):</label>
+            <span class="label-hint" id="t_h_fecha">Ej. 1998, 2006, 12051990. (Separa con comas)</span>
+            <div class="input-wrapper"><input type="text" id="inputFecha" placeholder="1998, 2006, 12051995"></div>
+
+            <label for="inputNumeros" id="t_l_numeros">Números Fijos (Teléfonos, C.I, Matrículas):</label>
+            <span class="label-hint" id="t_h_numeros">Documentos, Cédula, placas de auto. (Separa con comas)</span>
+            <div class="input-wrapper"><input type="text" id="inputNumeros" placeholder="12345678, 5550000"></div>
+
+            <label for="inputExtra" id="t_l_extra">Mascotas / Aficiones / Empresas / Extra:</label>
+            <span class="label-hint" id="t_h_extra">Ej. Tom, Guitarra, admin. (Separa con comas)</span>
+            <div class="input-wrapper"><input type="text" id="inputExtra" placeholder="Tom, Batman, admin"></div>
+
+            <h3 id="t_h3_2">Personalización</h3>
+            <div class="grid-2">
+                <label class="checkbox-group">
+                    <input type="checkbox" id="chkLeet"> 
+                    <span id="t_c_leet">Modo Leetspeak (a=4, e=3...)</span>
+                </label>
+                <label class="checkbox-group">
+                    <input type="checkbox" id="chkInvertir"> 
+                    <span id="t_c_inv">Invertir (carlos -> solrac)</span>
+                </label>
+            </div>
+
+            <h3 id="t_h3_3">Patrones & Combinaciones</h3>
+            <label for="inputSeparadores" id="t_l_sep">Separadores personalizados:</label>
+            <span class="label-hint" id="t_h_sep">Caracteres para unir palabras. Déjalo en blanco para unir directo.</span>
+            <div class="input-wrapper"><input type="text" id="inputSeparadores" value="._-" placeholder="._-@"></div>
+
+            <label class="checkbox-group">
+                <input type="checkbox" id="chkCombinar3"> 
+                <span id="t_c_comb">Combinar hasta 3 palabras</span> <span class="warning">(! MEM_WARNING)</span>
+            </label>
+
+            <div class="grid-2">
+                <label class="checkbox-group">
+                    <input type="checkbox" id="chkSufijos" checked> 
+                    <span id="t_c_suf">Añadir sufijos (palabra123)</span>
+                </label>
+                <label class="checkbox-group">
+                    <input type="checkbox" id="chkPrefijos"> 
+                    <span id="t_c_pref">Añadir prefijos (123palabra)</span>
+                </label>
+            </div>
+
+            <h3 id="t_h3_4">Límites de Ejecución</h3>
+            <div class="grid-2">
+                <div>
+                    <label for="minLen" id="t_l_min">Long. Mínima:</label>
+                    <div class="input-wrapper"><input type="number" id="minLen" value="6" min="1"></div>
+                </div>
+                <div>
+                    <label for="maxLen" id="t_l_max">Long. Máxima:</label>
+                    <div class="input-wrapper"><input type="number" id="maxLen" value="20" min="1"></div>
+                </div>
+            </div>
+
+            <label for="limiteCantidad" id="t_l_lim">Límite Máximo de Resultados (Max 1M):</label>
+            <div class="input-wrapper"><input type="number" id="limiteCantidad" value="100000" min="1" max="1000000"></div>
+
+            <div class="grid-3">
+                <button type="button" id="btnGenerar" onclick="iniciarGeneracion()">[Generar]</button>
+                <button type="button" id="btnPerfil" onclick="descargarPerfil()">[Exportar Perfil]</button>
+                <button type="button" id="btnLimpiar" onclick="limpiarCampos()">[Limpiar]</button>
+            </div>
+        </form>
+
+        <textarea id="resultadoDiccionario" readonly placeholder="> Esperando ejecución..."></textarea>
+        
+        <div class="grid-2">
+            <button type="button" id="btnDescargar" onclick="descargarTXT()">[Descargar.txt]</button>
+            <button type="button" id="btnCopiar" onclick="copiarAlPortapapeles()">[ copiar_memoria ]</button>
+        </div>
+
+        <footer>
+            <a href="https://github.com/thegabrielplusx" target="_blank" rel="noopener noreferrer">
+                <img src="autor.jpg" alt="Autor" class="author-img">
+            </a>
+            <div class="author-info">
+                <span id="t_author_label">Desarrollado por:</span>
+                <span class="author-name">[Gabrielplusx]</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="thelogica.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+/* Definición de variables de color globales */
+:root {
+    --term-green: #00ff00;
+    --term-dark-green: #005500;
+    --term-dim-green: #00aa00;
+    --term-bg: #050505;
+    /* Añade aquí la URL de tu imagen */
+    --wallpaper-url: url('walpaper.webp'); 
+}
+
+/* Estilos base del documento */
+body { 
+    font-family: 'Courier New', Courier, monospace; 
+    background-color: var(--term-bg); 
+    /* Configuración del Wallpaper */
+    background-image: 
+        linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.85)), /* Capa oscura para legibilidad */
+        var(--wallpaper-url);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    color: var(--term-green); 
+    margin: 0; 
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    line-height: 1.4;
+    min-height: 100vh;
+}
+
+/* Mejora de visibilidad para el contenedor con fondo */
+.container {
+    max-width: 800px;
+    width: 100%;
+    background: rgba(5, 5, 5, 0.7); /* Fondo semi-transparente para el contenido */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.1); /* Brillo sutil */
+}
+
+/* Estilos de encabezados amigo*/
+h1 { 
+    text-align: center; 
+    text-transform: uppercase; 
+    margin-top: 0;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    border-bottom: 1px dashed var(--term-green);
+    padding-bottom: 10px;
+}
+
+h3 { 
+    color: var(--term-green); 
+    margin-top: 30px;
+    text-transform: uppercase;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Pseudo-elemento para simular una consola Linux */
+h3::before {
+    content: "root@thegabrielplusx:~# ";
+    opacity: 0.7;
+    margin-right: 10px;
+}
+
+/* Estilos de etiquetas y ayudas de texto */
+label { 
+    display: block; 
+    margin-top: 15px; 
+    font-weight: bold;
+}
+
+.label-hint { 
+    font-size: 0.8em; 
+    color: var(--term-dim-green); 
+    display: block; 
+    margin-bottom: 5px;
+}
+
+/* Envoltorio para los inputs de texto simulando entrada de comandos de un terminal amigo*/
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-wrapper::before {
+    content: "$";
+    margin-right: 10px;
+    color: var(--term-green);
+}
+
+/* Estilos de campos de texto y número  amigo*/
+input[type="text"], input[type="number"] { 
+    width: 100%; 
+    padding: 5px 0; 
+    background: transparent; 
+    color: var(--term-green); 
+    border: none; 
+    border-bottom: 1px dashed var(--term-dark-green); 
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    caret-color: var(--term-green);
+}
+
+input:focus { 
+    outline: none; 
+    border-bottom: 1px solid var(--term-green); 
+}
+
+input::placeholder {
+    color: var(--term-dark-green);
+}
+
+/* Personalización visual de los checkboxes amigo*/
+.checkbox-group { 
+    display: flex; 
+    align-items: center; 
+    margin-top: 10px; 
+    cursor: pointer; 
+}
+
+.checkbox-group input { 
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 1px solid var(--term-green);
+    background: transparent;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.checkbox-group input:checked::after {
+    content: "X";
+    position: absolute;
+    top: -2px;
+    left: 2px;
+    color: var(--term-green);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Estilo para advertencias de alto consumo de memoria amigo*/
+.checkbox-group .warning { 
+    color: #ffaa00; 
+    font-size: 0.85em; 
+    margin-left: 5px; 
+}
+
+/* Sistema de grillas para organizar elementos amigo*/
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 650px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+
+/* Estilos de botones interactivos amigo*/
+button { 
+    width: 100%; 
+    margin-top: 25px; 
+    padding: 10px; 
+    background-color: transparent; 
+    color: var(--term-green); 
+    border: 1px solid var(--term-green); 
+    cursor: pointer; 
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold; 
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: all 0.2s;
+}
+
+button:hover { 
+    background-color: var(--term-green); 
+    color: var(--term-bg);
+}
+
+button:disabled { 
+    border-color: var(--term-dark-green); 
+    color: var(--term-dark-green); 
+    cursor: not-allowed; 
+    background-color: transparent;
+}
+
+/* Ocultos por defecto hasta que se genera un resultado amigo*/
+#btnDescargar, #btnCopiar { 
+    display: none; 
+    margin-top: 15px;
+}
+
+/* Estilos del área de texto donde se muestran las contraseñas generadas amigo */
+textarea { 
+    width: 100%; 
+    height: 300px; 
+    margin-top: 20px; 
+    background: transparent; 
+    color: var(--term-green); 
+    border: 1px solid var(--term-dark-green); 
+    padding: 10px; 
+    box-sizing: border-box;
+    resize: vertical;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre;
+    scrollbar-color: var(--term-green) var(--term-bg);
+    scrollbar-width: thin;
+}
+
+textarea:focus {
+    outline: none;
+    border: 1px solid var(--term-green);
+}
+
+/* Personalización de la barra de desplazamiento (Scrollbar) para webkit amigo*/
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--term-bg); }
+::-webkit-scrollbar-thumb { background: var(--term-dark-green); }
+::-webkit-scrollbar-thumb:hover { background: var(--term-green); }
+
+/* Estilos del pie de página y créditos amigo*/
+footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--term-dark-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.author-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--term-dark-green);
+    object-fit: cover;
+    background-color: var(--term-bg);
+}
+
+.author-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+}
+
+.author-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--term-green);
+}
