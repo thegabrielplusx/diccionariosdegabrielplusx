@@ -1,255 +1,469 @@
-/* Definición de variables de color globales */
+/* colores generales de la pagina amigo*/
 :root {
+    /* verde claro y brillante */
     --term-green: #00ff00;
+    /* verde muy oscuro */
     --term-dark-green: #005500;
+    /* verde a la mitad de tono */
     --term-dim-green: #00aa00;
+    /* color negro para el fondo */
     --term-bg: #050505;
-    /* Añade aquí la URL de tu imagen */
+    /* foto que va atras de todo */
     --wallpaper-url: url('walpaper.webp'); 
 }
 
-/* Estilos base del documento */
+/* forma de todo el cuerpo de la pantalla */
 body { 
+    /* tipo de letra de maquina antigua */
     font-family: 'Courier New', Courier, monospace; 
+    /* poner fondo de color negro */
     background-color: var(--term-bg); 
-    /* Configuración del Wallpaper */
+    /* capas de fondo de la pantalla */
     background-image: 
-        linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.85)), /* Capa oscura para legibilidad */
+        /* capa negra oscura casi tapando */
+        linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.85)), 
+        /* foto que elegimos arriba */
         var(--wallpaper-url);
+    /* hacer que la foto cubra todo el lugar */
     background-size: cover;
+    /* centrar la foto en el medio exacto */
     background-position: center;
+    /* hacer que la foto no baje cuando bajas */
     background-attachment: fixed;
-    
+    /* color verde para todas las letras */
     color: var(--term-green); 
+    /* quitar margen por la parte de afuera */
     margin: 0; 
+    /* espacio por la parte de adentro */
     padding: 20px;
+    /* juntar cosas en un bloque */
     display: flex;
+    /* poner el bloque en el centro */
     justify-content: center;
+    /* altura entre cada linea de texto */
     line-height: 1.4;
+    /* altura minima para ocupar todo lo alto */
     min-height: 100vh;
+    /* quitar luz azul al tocar en celulares */
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Mejora de visibilidad para el contenedor con fondo */
+/* bloque grande que guarda todo el contenido */
 .container {
+    /* tamaño maximo de ancho de la caja */
     max-width: 800px;
+    /* ocupar todo el ancho que dejen */
     width: 100%;
-    background: rgba(5, 5, 5, 0.7); /* Fondo semi-transparente para el contenido */
+    /* fondo casi negro que deja ver atras */
+    background: rgba(5, 5, 5, 0.7); 
+    /* espacio de aire por dentro de la caja */
     padding: 20px;
+    /* esquinas redondas en la caja */
     border-radius: 5px;
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.1); /* Brillo sutil */
+    /* sombra verde suave por fuera */
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.1); 
 }
 
-/* Estilos de encabezados amigo*/
+/* titulo grande principal de arriba */
 h1 { 
+    /* poner el texto en todo el centro */
     text-align: center; 
+    /* forzar que las letras sean mayusculas */
     text-transform: uppercase; 
+    /* quitar el espacio superior por fuera */
     margin-top: 0;
+    /* tamaño grande de las letras */
     font-size: 1.5rem;
+    /* separar cada letra un poco */
     letter-spacing: 2px;
+    /* linea de rayas abajo de color verde */
     border-bottom: 1px dashed var(--term-green);
+    /* espacio entre las letras y la linea abajo */
     padding-bottom: 10px;
 }
 
+/* titulos de cada seccion mas pequeña */
 h3 { 
+    /* color de letras verde vivo */
     color: var(--term-green); 
+    /* alejar la parte de arriba de lo demas */
     margin-top: 30px;
+    /* todas las letras en mayusculas siempre */
     text-transform: uppercase;
+    /* tamaño normal de letra comun */
     font-size: 1rem;
+    /* poner elementos en fila */
     display: flex;
+    /* centrar la linea de los elementos */
     align-items: center;
 }
 
-/* Pseudo-elemento para simular una consola Linux */
+/* letras falsas que salen antes del titulo */
 h3::before {
+    /* letras que queremos mostrar antes */
     content: "root@thegabrielplusx:~# ";
+    /* hacerlo algo transparente */
     opacity: 0.7;
+    /* dejar espacio del lado derecho */
     margin-right: 10px;
 }
 
-/* Estilos de etiquetas y ayudas de texto */
+/* nombre que acompaña a las cajas de escribir */
 label { 
+    /* usar todo el ancho de su linea */
     display: block; 
+    /* espacio desde arriba */
     margin-top: 15px; 
+    /* letras mas gruesas y gordas */
     font-weight: bold;
 }
 
+/* texto chico en gris para dar ayuda */
 .label-hint { 
+    /* tamaño de letra pequeño */
     font-size: 0.8em; 
+    /* verde oscuro menos llamativo */
     color: var(--term-dim-green); 
+    /* usar la linea entera */
     display: block; 
+    /* separacion abajo antes de otra cosa */
     margin-bottom: 5px;
 }
 
-/* Envoltorio para los inputs de texto simulando entrada de comandos de un terminal amigo*/
+/* caja que envuelve la zona de escribir */
 .input-wrapper {
+    /* poner lado a lado en un grupo */
     display: flex;
+    /* centrar bien en la misma linea vertical */
     align-items: center;
+    /* espacio en la parte de abajo */
     margin-bottom: 10px;
 }
 
+/* letra que se ve antes del cuadro de texto */
 .input-wrapper::before {
+    /* letra falsa a mostrar */
     content: "$";
+    /* separacion a la derecha */
     margin-right: 10px;
+    /* color verde fuerte */
     color: var(--term-green);
 }
 
-/* Estilos de campos de texto y número  amigo*/
+/* cajas para escribir letras y numeros */
 input[type="text"], input[type="number"] { 
+    /* agarrar todo el ancho que pueda */
     width: 100%; 
-    padding: 5px 0; 
+    /* espacio por arriba abajo y lados adentro */
+    padding: 12px 8px; 
+    /* quitar el color base de fondo */
     background: transparent; 
+    /* color verde para lo que se escribe */
     color: var(--term-green); 
+    /* borrar todos los bordes cerrados */
     border: none; 
+    /* poner solo una linea de rayas abajo */
     border-bottom: 1px dashed var(--term-dark-green); 
+    /* usar tipo de letra clasico */
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1rem;
+    /* tamaño de la letra mediano */
+    font-size: 16px; 
+    /* color de la raya parpadeante al escribir */
     caret-color: var(--term-green);
+    /* toques directos sin espera en celular */
+    touch-action: manipulation;
 }
 
+/* cuando tocas la caja para empezar a escribir */
 input:focus { 
+    /* borrar la linea de ayuda del navegador */
     outline: none; 
+    /* cambiar la linea de rayas por linea entera */
     border-bottom: 1px solid var(--term-green); 
 }
 
+/* texto borroso que ayuda adentro de la caja */
 input::placeholder {
+    /* verde oscuro para no distraer */
     color: var(--term-dark-green);
 }
 
-/* Personalización visual de los checkboxes amigo*/
+/* grupo donde esta el cuadro de marcar equis */
 .checkbox-group { 
+    /* agrupar los elementos uno junto al otro */
     display: flex; 
+    /* centrar sobre la misma fila */
     align-items: center; 
+    /* espacio libre superior */
     margin-top: 10px; 
+    /* espacio de aire por arriba y por abajo */
+    padding: 10px 0; 
+    /* mostrar una mano al pasar con el raton */
     cursor: pointer; 
+    /* toque rapido en pantallas pequeñas */
+    touch-action: manipulation;
 }
 
+/* el propio cuadrito donde se marca */
 .checkbox-group input { 
+    /* quitar la forma natural del navegador */
     appearance: none;
-    width: 15px;
-    height: 15px;
+    /* ancho fijo del cuadrito nuevo */
+    width: 24px;
+    /* alto fijo igual al ancho */
+    height: 24px;
+    /* borde verde liso fino */
     border: 1px solid var(--term-green);
+    /* el cuadro no tiene color adentro */
     background: transparent;
-    margin-right: 10px;
+    /* separacion hacia las letras de al lado */
+    margin-right: 12px;
+    /* dar una ubicacion libre pero en su sitio */
     position: relative;
+    /* poner mano al pasar por arriba */
     cursor: pointer;
+    /* no dejar que el cuadrito se aplaste */
+    flex-shrink: 0;
 }
 
+/* el dibujo de equis al marcar el cuadro */
 .checkbox-group input:checked::after {
+    /* poner letra equis como marca */
     content: "X";
+    /* ubicar esto encima del cuadrito */
     position: absolute;
-    top: -2px;
-    left: 2px;
+    /* pegado a la parte superior */
+    top: 0px;
+    /* un poco alejado de la izquierda */
+    left: 6px;
+    /* color de la equis verde vivo */
     color: var(--term-green);
-    font-size: 14px;
+    /* tamaño algo grande para que se vea */
+    font-size: 18px;
+    /* hacer la equis gordita */
     font-weight: bold;
 }
 
-/* Estilo para advertencias de alto consumo de memoria amigo*/
+/* texto de advertencia para tener cuidado */
 .checkbox-group .warning { 
+    /* color entre rojo y amarillo oscuro */
     color: #ffaa00; 
+    /* letra un poco mas chica de lo normal */
     font-size: 0.85em; 
+    /* distancia por el lado izquierdo */
     margin-left: 5px; 
 }
 
-/* Sistema de grillas para organizar elementos amigo*/
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
+/* zona de bloques en dos partes iguales */
+.grid-2 { 
+    /* usar cajas en forma de tabla o red */
+    display: grid; 
+    /* cortar la fila en dos partes gemelas */
+    grid-template-columns: 1fr 1fr; 
+    /* aire entre los dos espacios cortados */
+    gap: 15px; 
+}
 
-/* Responsividad para pantallas pequeñas */
+/* zona de bloques en tres partes iguales */
+.grid-3 { 
+    /* usar cajas en forma de tabla o red */
+    display: grid; 
+    /* cortar la fila en tres pedazos iguales */
+    grid-template-columns: 1fr 1fr 1fr; 
+    /* aire separando cada pedazo */
+    gap: 15px; 
+}
+
+/* cambios de tamaño para ver en celulares */
 @media (max-width: 650px) {
-    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    /* agarrar los bloques de dos y tres cortes */
+    .grid-2, .grid-3 { 
+        /* hacer que ocupen toda una fila sola */
+        grid-template-columns: 1fr; 
+    }
+    /* agarrar el cuerpo entero de la pagina */
+    body { 
+        /* reducir el espacio libre por los lados */
+        padding: 10px; 
+    }
 }
 
-/* Estilos de botones interactivos amigo*/
+/* cuadro para apretar y hacer una accion */
 button { 
+    /* cubrir todo el espacio a lo ancho */
     width: 100%; 
+    /* separacion superior lejos de arriba */
     margin-top: 25px; 
-    padding: 10px; 
+    /* dejar aire por dentro para verse gordo */
+    padding: 15px 10px; 
+    /* alto minimo necesario para tocar facil */
+    min-height: 48px;
+    /* vaciar el color para no tener fondo */
     background-color: transparent; 
+    /* color verde para las letras de adentro */
     color: var(--term-green); 
+    /* raya fina verde haciendo un cuadro */
     border: 1px solid var(--term-green); 
+    /* flecha de la mano indicando accion */
     cursor: pointer; 
+    /* tipo de letra tradicional y cuadrado */
     font-family: 'Courier New', Courier, monospace;
+    /* hacer las letras muy anchas y marcadas */
     font-weight: bold; 
-    font-size: 1rem;
+    /* tamaño comun y corriente */
+    font-size: 16px;
+    /* forzar letras mayusculas puras */
     text-transform: uppercase;
+    /* retraso suave en cambios visuales */
     transition: all 0.2s;
+    /* toque veloz sin esperas feas */
+    touch-action: manipulation;
 }
 
+/* al pasar la flecha por el cuadro de accion */
 button:hover { 
+    /* llenar el cuadro del mismo verde intenso */
     background-color: var(--term-green); 
+    /* cambiar las letras a negras de fondo */
     color: var(--term-bg);
 }
 
+/* cuadro de accion apagado y sin uso */
 button:disabled { 
+    /* oscurecer la linea del borde */
     border-color: var(--term-dark-green); 
+    /* oscurecer las palabras del cuadro */
     color: var(--term-dark-green); 
+    /* mostrar flecha de paso prohibido */
     cursor: not-allowed; 
+    /* mantener vacio el color del cuadro */
     background-color: transparent;
 }
 
-/* Ocultos por defecto hasta que se genera un resultado amigo*/
+/* los botones para guardar y guardar copia */
 #btnDescargar, #btnCopiar { 
+    /* esconder de inicio sin verse para nada */
     display: none; 
+    /* bajar un poco despues del elemento anterior */
     margin-top: 15px;
 }
 
-/* Estilos del área de texto donde se muestran las contraseñas generadas amigo */
+/* la zona alta grande del resultado final */
 textarea { 
+    /* agarrar el ancho total desde el centro */
     width: 100%; 
+    /* forzar que tenga bastante alto fijo */
     height: 300px; 
+    /* distancia arriba separando del resto */
     margin-top: 20px; 
+    /* fondo de adentro totalmente limpio */
     background: transparent; 
+    /* verde base para todas las letras */
     color: var(--term-green); 
+    /* borde oscuro verde todo alrededor */
     border: 1px solid var(--term-dark-green); 
-    padding: 10px; 
+    /* empujar las letras para que no toquen borde */
+    padding: 15px; 
+    /* mantener tamaño interno sin romper la caja */
     box-sizing: border-box;
+    /* solo dejar estirar la caja para abajo */
     resize: vertical;
+    /* usar letra maquina */
     font-family: 'Courier New', Courier, monospace;
+    /* tamaño normal letra */
+    font-size: 16px; 
+    /* conservar espacios y saltos de cada linea */
     white-space: pre;
+    /* color verde y negro para barra de arrastrar */
     scrollbar-color: var(--term-green) var(--term-bg);
+    /* barra de arrastrar con grosor delgado */
     scrollbar-width: thin;
+    /* toque rapido pantallas tactiles */
+    touch-action: manipulation;
 }
 
+/* la zona alta al recibir enfoque o toque */
 textarea:focus {
+    /* limpiar bordes automaticos del programa */
     outline: none;
+    /* remarcar caja con un borde verde intenso */
     border: 1px solid var(--term-green);
 }
 
-/* Personalización de la barra de desplazamiento (Scrollbar) para webkit amigo*/
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--term-bg); }
-::-webkit-scrollbar-thumb { background: var(--term-dark-green); }
-::-webkit-scrollbar-thumb:hover { background: var(--term-green); }
+/* forma de barra arrastradora para varios programas */
+::-webkit-scrollbar { 
+    /* anchura fina de la zona de barra */
+    width: 8px; 
+}
 
-/* Estilos del pie de página y créditos amigo*/
+/* el camino hueco de la barra arrastradora */
+::-webkit-scrollbar-track { 
+    /* pintar el camino hueco con negro fuerte */
+    background: var(--term-bg); 
+}
+
+/* el cuadrito movil de la barra arrastradora */
+::-webkit-scrollbar-thumb { 
+    /* pintar cuadrito de color oscuro suave */
+    background: var(--term-dark-green); 
+}
+
+/* el cuadrito movil al poner flecha encima */
+::-webkit-scrollbar-thumb:hover { 
+    /* iluminar de verde brillante al rozar */
+    background: var(--term-green); 
+}
+
+/* franja final mas baja con la marca tuya */
 footer {
+    /* separar enormemente por la zona alta */
     margin-top: 40px;
+    /* darle aire en la zona superior adentrando */
     padding-top: 20px;
+    /* pintar linea raya rayada en la cima */
     border-top: 1px dashed var(--term-dark-green);
+    /* tratar partes como piezas de conjunto */
     display: flex;
+    /* encuadrar al nivel central a todos */
     align-items: center;
+    /* nivelar al puro medio plano largo */
     justify-content: center;
+    /* abrir hueco justo entre la cara y la firma */
     gap: 15px;
 }
 
+/* foto pequeña tuya tipo cara redonda amigo*/
 .author-img {
+    /* ancho corto para que no estorbe amigo*/
     width: 50px;
+    /* altura igual al ancho amigo*/
     height: 50px;
+    /* curva total volviendo todo en pelota */
     border-radius: 50%;
+    /* poner anillo oscuro rodeando la figura */
     border: 2px solid var(--term-dark-green);
+    /* hacer que no se deforme al achicarla */
     object-fit: cover;
+    /* tapar detras color negro fondo */
     background-color: var(--term-bg);
 }
 
+/* texto con descripcion tuya amigo */
 .author-info {
+    /* volver las lineas cajas pequeñas */
     display: flex;
+    /* agrupar bajando en escalon uno tras otro */
     flex-direction: column;
+    /* medida letra apenas bajita */
     font-size: 0.9rem;
 }
 
+/* nombre resaltado de tu marca o apodo amigo */
 .author-name {
+    /* estirar letra un poquito mas */
     font-size: 1.1rem;
+    /* engordar el contorno hasta verse duro */
     font-weight: bold;
+    /* destacar nombre con el verde reluciente */
     color: var(--term-green);
 }
