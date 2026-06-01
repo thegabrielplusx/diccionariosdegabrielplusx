@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#050505">
     <title>Generador de Diccionarios (Gabrielplusx)</title>
     <link rel="stylesheet" href="diseño.css">
 </head>
@@ -87,7 +88,7 @@
             </div>
 
             <label for="limiteCantidad" id="t_l_lim">Límite Máximo de Resultados (Max 1M):</label>
-            <div class="input-wrapper"><input type="number" id="limiteCantidad" value="100000" min="1" max="1000000"></div>
+            <div class="input-wrapper"><input type="number" id="limiteCantidad" value="100000" min="1" max="1000000" oninput="if(this.value > 1000000) this.value = 1000000;"></div>
 
             <div class="grid-3">
                 <button type="button" id="btnGenerar" onclick="iniciarGeneracion()">[Generar]</button>
