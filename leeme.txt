@@ -15,4 +15,4 @@ Portugues de Portugal
 
 O Gerador de Dicionários (Gabrielplusx) foi concebido para criar dicionários personalizados destinados a testes de penetração e auditorias de palavras-passe. O programa permite exportar os resultados em formato .txt e descarregar as informações OSINT que tiver introduzido durante o processo.
 
-https://elgeneradordeccionariosgabrielplusx.netlify.app/ link de la pagina para probar el proyecto.
+https://elgeneradordediccionariosgabrielplusx.netlify.app/ link de la pagina para probar el proyecto.
