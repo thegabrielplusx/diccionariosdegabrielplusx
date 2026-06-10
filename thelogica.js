@@ -17,7 +17,7 @@ const i18n = {
         "t_h_extra": "Ej. Tom, Guitarra, admin. (Separa con comas)",
         "t_h3_2": "Personalización",
         "t_c_leet": "Modo Leetspeak (a=4, e=3...)",
-        "t_c_inv": "Invertir (carlos -> solrac)",
+        "t_c_inv": "Invertir (Neo -> OEN)",
         "t_h3_3": "Patrones & Combinaciones",
         "t_l_sep": "Separadores personalizados:",
         "t_h_sep": "Caracteres para unir palabras. Déjalo en blanco para unir directo.",
@@ -27,11 +27,11 @@ const i18n = {
         "t_h3_4": "Límites de Ejecución",
         "t_l_min": "Long. Mínima:",
         "t_l_max": "Long. Máxima:",
-        "t_l_lim": "Límite Máximo de Resultados (Max 1M):",
+        "t_l_lim": "Límite Máximo de Resultados (Maximo 1000000):",
         "btnGenerar": "[Generar]",
-        "btnPerfil": "[Exportar perfil]",
+        "btnPerfil": "[Exportar el perfil]",
         "btnLimpiar": "[Limpiar]",
-        "btnDescargar": "[Descargar.txt ]",
+        "btnDescargar": "[Descargar en txt]",
         "btnCopiar": "[ copiar_memoria ]",
         "placeholder_res": "> Esperando ejecución...",
         "msg_ejecutando": "> Ejecutando script... calculando combinaciones...",
@@ -79,7 +79,7 @@ const i18n = {
         "t_h3_4": "Limites de Execução",
         "t_l_min": "Comp. Mínimo:",
         "t_l_max": "Comp. Máximo:",
-        "t_l_lim": "Limite Máximo de Resultados (Max 1M):",
+        "t_l_lim": "Limite Máximo de Resultados (Max 1000000):",
         "btnGenerar": "[ ./gerar ]",
         "btnPerfil": "[ exportar_perfil ]",
         "btnLimpiar": "[ limpar ]",
@@ -131,7 +131,7 @@ const i18n = {
         "t_h3_4": "Limites de Execução",
         "t_l_min": "Comp. Mínimo:",
         "t_l_max": "Comp. Máximo:",
-        "t_l_lim": "Limite Máximo de Resultados (Máx 1M):",
+        "t_l_lim": "Limite Máximo de Resultados (Máx 1000000):",
         "btnGenerar": "[ Gerar ]",
         "btnPerfil": "[ Exportar perfil ]",
         "btnLimpiar": "[ Limpar ]",
@@ -183,7 +183,7 @@ const i18n = {
         "t_h3_4": "Execution Limits",
         "t_l_min": "Min. Length:",
         "t_l_max": "Max. Length:",
-        "t_l_lim": "Max Results Limit (Max 1M):",
+        "t_l_lim": "Max Results Limit (Max 1000000):",
         "btnGenerar": "[ Generate ]",
         "btnPerfil": "[ Export Profile ]",
         "btnLimpiar": "[ Clear ]",
@@ -217,10 +217,10 @@ let currentLang = "es";
 const idiomasDisponibles = ["es", "pt", "pt-PT", "en"];
 // textos del boton
 const etiquetasBoton = {
-    "es": "[ IDIOMA: ES ]",
-    "pt": "[ IDIOMA: PT-BR ]",
-    "pt-PT": "[ IDIOMA: PT-PT ]",
-    "en": "[ LANGUAGE: EN ]"
+    "es": "[IDIOMA: ES]",
+    "pt": "[IDIOMA: PT-BR]",
+    "pt-PT": "[IDIOMA: PT-PT]",
+    "en": "[LANGUAGE: EN]"
 };
 
 // cambia el idioma de la web
@@ -507,5 +507,58 @@ if (inputLimite) {
     });
 }
 
+
+// Personalizar la pagina.
+
+// 1. Arrastrar y mover el contenedor con el ratón
+const cajaPrincipal = document.querySelector('.container');
+let arrastrando = false, inicioX, inicioY, inicioIzquierda, inicioArriba;
+
+cajaPrincipal.style.position = 'absolute';
+cajaPrincipal.style.cursor = 'move';
+
+cajaPrincipal.addEventListener('mousedown', (e) => {
+    if (['INPUT', 'TEXTAREA', 'BUTTON', 'A', 'LABEL'].includes(e.target.tagName)) return;
+    arrastrando = true;
+    inicioX = e.clientX;
+    inicioY = e.clientY;
+    const rect = cajaPrincipal.getBoundingClientRect();
+    inicioIzquierda = rect.left;
+    inicioArriba = rect.top;
+    cajaPrincipal.style.margin = '0';
+});
+
+document.addEventListener('mousemove', (e) => {
+    if (!arrastrando) return;
+    cajaPrincipal.style.left = `${inicioIzquierda + (e.clientX - inicioX)}px`;
+    cajaPrincipal.style.top = `${inicioArriba + (e.clientY - inicioY)}px`;
+});
+
+document.addEventListener('mouseup', () => {
+    arrastrando = false;
+});
+
+// 2. Cambiar los colores de la interfaz usando Ctrl + Rueda del ratón
+let tonoColor = 120; 
+document.addEventListener('wheel', (e) => {
+    if (e.ctrlKey) {
+        e.preventDefault();
+        tonoColor = (tonoColor + (e.deltaY > 0 ? 15 : -15)) % 360;
+        document.documentElement.style.setProperty('--term-green', `hsl(${tonoColor}, 100%, 50%)`);
+        document.documentElement.style.setProperty('--term-dark-green', `hsl(${tonoColor}, 100%, 20%)`);
+        document.documentElement.style.setProperty('--term-dim-green', `hsl(${tonoColor}, 100%, 35%)`);
+    }
+}, { passive: false });
+
+// 3. Editar directamente cualquier texto de la página haciendo doble clic en el fondo
+document.addEventListener('dblclick', (e) => {
+    if (!['INPUT', 'TEXTAREA', 'BUTTON'].includes(e.target.tagName)) {
+        const modoEdicion = document.designMode === 'on';
+        document.designMode = modoEdicion ? 'off' : 'on';
+        document.body.style.cursor = modoEdicion ? 'default' : 'text';
+    }
+});
+
 //Codigo creado por Gabrielplusx para un uso educativo y su uso se recomienda en un ambiente controlado y permitido.
-//Desenvolvido por Gabrielplusx
+//Code created by Gabriel Plusx for educational use and its use is recommended in a controlled and permitted environment.
+//Código criado por Gabrielplusx para fins educacionais, sendo recomendado seu uso em um ambiente controlado e autorizado.
