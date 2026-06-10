@@ -1,0 +1,71 @@
+Ruta de archivos del codigo:
+
+index.html (Esqueleto HTML) .
+diseño.css (estilos de la páginas CSS) 
+thelogica.js (Toda la lógica de JS, traducción de idiomas,establecer los límites técnicos,
+ entre otros.) 
+walpaper.webp (Fondo de pantalla de la página) 
+LICENSE (licencia del código).
+
+Logica de generacion de textos.
+
+1. Ingreso de Datos
+
+El proceso comienza cuando el usuario introduce la información específica en los campos de texto del formulario y presiona el botón de generar.
+
+2. Recolección y Limpieza
+
+El sistema lee el contenido de cada campo del formulario.Separa el texto utilizando las comas como punto de división, elimina los espacios en blanco innecesarios al principio y al final de cada palabra que tiene, y descarta las palabras que estén repetidas para crear una lista principal que es única.
+
+3. Generación de las Variaciones
+
+Por cada palabra en la lista principal, el sistema crea múltiples versiones de la misma, dependiendo de las opciones que el usuario haya seleccionado en la configuración:
+
+    Formatos de texto: Se crea una versión en minúsculas, una en mayúsculas y una con la primera letra en mayúscula.
+
+    Sustitución de caracteres: Si la opción está activa, se reemplazan letras específicas por números.
+
+    Inversión: Si la opción está activa, se invierte el orden de los caracteres de la palabra.
+
+4. Combinación de los Elementos
+
+Con la lista de variaciones lista, el sistema procede a estructurar las contraseñas mediante un proceso de unión:
+
+    Primero, evalúa cada palabra de forma individual.
+
+    Segundo, agrupa las palabras en pares, insertando entre ellas los caracteres separadores que el usuario haya definido.
+
+    Tercero, si el usuario habilitó la opción correspondiente, agrupa las palabras en conjuntos de tres, utilizando también los separadores.
+
+5. Aplicación de Afijos y Límites
+
+Antes de registrar una palabra combinada como un resultado final, el sistema realiza verificaciones y adiciones:
+
+    Afijos: Se añaden prefijos al inicio o sufijos al final de la palabra base si las opciones correspondientes están activadas.
+
+    Longitud: El sistema mide la palabra resultante. Solo se conserva si su cantidad de caracteres es igual o mayor al mínimo establecido, y menor o igual al máximo permitido.
+
+    Cantidad máxima: El sistema cuenta cuántas palabras han sido generadas. El proceso se detiene inmediatamente si se alcanza el límite máximo de resultados definido por el usuario para evitar la sobrecarga del navegador.
+
+6. Presentación de los Resultados.
+
+Las combinaciones que cumplen con todos los criterios se recopilan en una lista final de resultados únicos.Esta lista se muestra en el área de texto principal de la interfaz y el sistema habilita los botones que permiten al usuario copiar la información o descargarla como un archivo de texto.
+
+A continuacion grafica: 
+
+[Ingreso de Datos]
+       |
+       v
+[Recolección y Limpieza]
+       |
+       v
+[Generación de Variaciones]
+       |
+       v
+[Combinación de Elementos]
+       |
+       v
+[Aplicación de Afijos y Límites]
+       |
+       v
+[Presentación de Resultados]
