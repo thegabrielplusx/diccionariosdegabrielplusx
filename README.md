@@ -40,3 +40,27 @@ Link para a página de testes do projeto: https://elgeneradordediccionariosgabri
 Caminho dos arquivos no repositório:
 
 index.html (Esqueleto HTML) design.css (Estilos CSS da página) thelogica.js (Toda a lógica JS, tradução de idiomas, configuração de limites técnicos, etc.) wallpaper.webp (Fundo da página) LICENSE (Licença do código)
+
+
+
+La Vortara Generatoro (Gabrielplusx) estis dizajnita por krei personigitajn vortarojn celitajn al penetraj testoj kaj pasvortaj aŭditoj. La programo ebligas eksporti la rezultojn en formato .txt kaj elŝuti la OSINT-informojn, kiujn vi enigis dum la procezo. 🕵️‍♂️
+
+Avantaĝoj:
+Ĝi estas malfermfonteca, uzas la permeson GPL 3.0 kaj ĉio ruliĝas universale en via retumilo.
+
+😎 Haveblaj lingvoj: hispana, angla, brazila portugala, portugala de Portugalio.
+
+Ligo al la paĝo por testi la projekton:
+https://elgeneradordediccionariosgabrielplusx.netlify.app/
+
+Dosieraj vojoj de la deponejo:
+
+index.html (HTML-skeleto)
+
+diseño.css (stiloj de la paĝo CSS)
+
+thelogica.js (la tuta logiko de JS, tradukado de lingvoj, starigo de teknikaj limoj, inter aliaj)
+
+walpaper.webp (Fono de la paĝo)
+
+LICENSE (koda permesilo)
